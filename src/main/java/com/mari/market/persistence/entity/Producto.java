@@ -34,15 +34,6 @@ public class Producto {
 
 
 
-
-
-
-
-
-
-
-
-
     public Integer getIdProducto() {
         return idProducto;
     }
