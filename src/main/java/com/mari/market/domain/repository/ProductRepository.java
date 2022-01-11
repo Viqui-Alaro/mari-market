@@ -5,7 +5,8 @@ import com.mari.market.domain.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository {
+
+public interface ProductRepository  {
 
     List<Product> getAll();
     Optional<List<Product>> getByCategory(int categoryId);
