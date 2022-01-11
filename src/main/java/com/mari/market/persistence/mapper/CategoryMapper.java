@@ -1,6 +1,7 @@
 package com.mari.market.persistence.mapper;
 
 import com.mari.market.domain.Category;
+
 import com.mari.market.persistence.entity.Categoria;
 import org.mapstruct.*;
 
@@ -10,7 +11,7 @@ public interface CategoryMapper {
     @Mappings({
             @Mapping(source = "idCategoria",target = "categoryId"),
             @Mapping(source = "descripcion",target = "category"),
-            @Mapping(source = "estado",target = "active")
+            @Mapping(source = "estado",target = "active"),
     })
     Category toCategory(Categoria categoria);
 
