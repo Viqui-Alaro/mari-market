@@ -30,18 +30,26 @@ public class ProductController {
     }
 
     @GetMapping("/category/{categoryId}")
-    public Optional<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId){
-        return productService.getByCategory(categoryId);
+    public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId){
+        return productService.getByCategory(categoryId)
+                .map(products -> new ResponseEntity<>(products,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/save")
-    public Product save(@RequestBody Product product){
-         return productService.save(product);
+    public ResponseEntity save(@RequestBody Product product){
+
+        return new ResponseEntity<>(productService.save(product),HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") int productId){
-        return productService.delete(productId);
+    public ResponseEntity<Boolean> delete(@PathVariable("id") int productId){
+        if(productService.delete(productId)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
 
