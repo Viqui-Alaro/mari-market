@@ -3,6 +3,8 @@ package com.mari.market.web.controller;
 import com.mari.market.domain.Product;
 import com.mari.market.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +18,15 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/all")
-    public List<Product> getAll(){
-        return productService.getAll();
+    public ResponseEntity<List<Product>> getAll(){
+        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> getProduct(@PathVariable("id") int productId){
-        return productService.getProduct(productId);
+    public ResponseEntity<Product> getProduct(@PathVariable("id") int productId){
+        return productService.getProduct(productId)
+                .map(product -> new ResponseEntity<>(product,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/category/{categoryId}")
