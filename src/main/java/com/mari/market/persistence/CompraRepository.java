@@ -1,0 +1,33 @@
+package com.mari.market.persistence;
+
+import com.mari.market.domain.Purchase;
+import com.mari.market.domain.repository.PurchaseRepository;
+import com.mari.market.persistence.crud.CompraCrudRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public class CompraRepository implements PurchaseRepository {
+
+    @Autowired
+    private CompraCrudRepository compraCrudRepository;
+
+
+    @Override
+    public List<Purchase> getAll() {
+        return null;
+    }
+
+    @Override
+    public Optional<List<Purchase>> getByClient(String clientId) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Purchase save(Purchase purchase) {
+        return null;
+    }
+}
