@@ -3,6 +3,7 @@ package com.mari.market.persistence;
 import com.mari.market.domain.Purchase;
 import com.mari.market.domain.repository.PurchaseRepository;
 import com.mari.market.persistence.crud.CompraCrudRepository;
+import com.mari.market.persistence.mapper.PurchaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,9 @@ public class CompraRepository implements PurchaseRepository {
 
     @Autowired
     private CompraCrudRepository compraCrudRepository;
+
+    @Autowired
+    private PurchaseMapper mapper;
 
 
     @Override
