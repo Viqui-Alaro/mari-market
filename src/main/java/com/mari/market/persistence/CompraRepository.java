@@ -3,6 +3,7 @@ package com.mari.market.persistence;
 import com.mari.market.domain.Purchase;
 import com.mari.market.domain.repository.PurchaseRepository;
 import com.mari.market.persistence.crud.CompraCrudRepository;
+import com.mari.market.persistence.entity.Compra;
 import com.mari.market.persistence.mapper.PurchaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,16 +23,19 @@ public class CompraRepository implements PurchaseRepository {
 
     @Override
     public List<Purchase> getAll() {
-        return null;
+        return mapper.toPurchases((List<Compra>) compraCrudRepository.findAll());
     }
 
     @Override
     public Optional<List<Purchase>> getByClient(String clientId) {
-        return Optional.empty();
+        return compraCrudRepository.findIdCliente(clientId)
+                .map(compras -> mapper.toPurchases(compras));
     }
 
     @Override
     public Purchase save(Purchase purchase) {
+        Compra compra = mapper.toCompra(purchase);
+        compra.getProductos().forEach(producto -> producto.setCompra(compra));
         return null;
     }
 }
