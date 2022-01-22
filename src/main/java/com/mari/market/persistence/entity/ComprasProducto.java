@@ -4,9 +4,8 @@ package com.mari.market.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "compras_productos")
+@Table(name = "compras_productos")
 public class ComprasProducto {
-
     @EmbeddedId
     private ComprasProductoPK id;
 

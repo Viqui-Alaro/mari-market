@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "compras")
 public class Compra {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
@@ -31,7 +30,6 @@ public class Compra {
 
     @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
     private List<ComprasProducto> productos;
-
 
     public Integer getIdCompra() {
         return idCompra;

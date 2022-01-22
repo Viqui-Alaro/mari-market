@@ -1,7 +1,6 @@
 package com.mari.market.domain;
 
 public class PurchaseItem {
-
     private int productId;
     private int quantity;
     private double total;
@@ -39,3 +38,4 @@ public class PurchaseItem {
         this.active = active;
     }
 }
+
