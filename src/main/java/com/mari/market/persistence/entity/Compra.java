@@ -8,9 +8,10 @@ import java.util.List;
 @Table(name = "compras")
 public class Compra {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_compra")
+    @Column(name = "id_compra")
     private Integer idCompra;
 
     @Column(name = "id_cliente")
@@ -22,15 +23,15 @@ public class Compra {
     private String medioPago;
 
     private String comentario;
-
     private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", insertable = false,updatable = false)
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
     private List<ComprasProducto> productos;
+
 
     public Integer getIdCompra() {
         return idCompra;

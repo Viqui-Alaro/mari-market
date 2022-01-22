@@ -8,7 +8,7 @@ public class Purchase {
     private String clientId;
     private LocalDateTime date;
     private String paymentMethod;
-    private String commet;
+    private String comment;
     private String state;
     private List<PurchaseItem> items;
 
@@ -44,12 +44,12 @@ public class Purchase {
         this.paymentMethod = paymentMethod;
     }
 
-    public String getCommet() {
-        return commet;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCommet(String commet) {
-        this.commet = commet;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getState() {
